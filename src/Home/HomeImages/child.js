@@ -3,8 +3,8 @@ import React from 'react'
 export default function Child(props) {
 
 	return (
-		<svg style={{position: "fixed", top: `${props.top * 100 + .1}vh`}} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"  xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-			viewBox="0 0 464.001 464.001" height="50vh" space="preserve">
+		<svg style={{position: "fixed", top: `${props.top * 100}vh`, left: `${props.left}`}}version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"  xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			viewBox="0 0 464.001 464.001" height={props.size} space="preserve">
 			<g>
 				<path fill="#FFD7A3" d="M388.628,437.023l-10.126-81.012c-1.529-12.228-9.943-22.492-21.633-26.389l-39.047-13.016
 		c-5.362-1.788-11.244-0.649-15.379,2.874l-11.502-3.834c-6.533-2.178-10.94-8.292-10.94-15.179v-25.802l34.461-14.359

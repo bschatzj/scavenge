@@ -3,7 +3,7 @@ import React from 'react'
 export default function Child(props) {
 
     return (
-<svg version="1.1" style={{position: "fixed", top: `${props.top * 100 - 180}vh`, right:"70vw"}} id="Layer_1" xmlns="http://www.w3.org/2000/svg"  height="50vh" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" style={{position: "fixed", top: `${props.top * 100 - 180}vh`, left: `${props.left}`}} id="Layer_1" xmlns="http://www.w3.org/2000/svg"  height={props.size} xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 512.001 512.001" space="preserve">
 <path fill="#785546" d="M203.036,308.966c39.873-6.646,89.752-28.299,111.974-38.599
 	c6.897-3.196,10.928-10.436,10.071-17.988c-2.524-22.236-7.262-72.561-7.286-137.117C317.77,51.869,266.427-0.002,203.036,0l0,0l0,0
