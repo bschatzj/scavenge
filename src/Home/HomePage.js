@@ -8,7 +8,8 @@ import Couple from './HomeImages/love'
 import Man from './HomeImages/man'
 import Woman from './HomeImages/woman'
 
-export default function HomePage() {
+export default function HomePage(props) {
+    console.log(props)
     const scroll = useScroll()
     const window = Window()
 
@@ -17,7 +18,8 @@ export default function HomePage() {
     console.log(window)
     return (
         <div style={{ height: window.height * 6.5, display: "flex", justifyContent: "center" }}>
-            {top < .2 ? <h1 style={{ fontSize: '4rem', top: "80%", position: "absolute", }}>Welcome to Scavenge With Friends!</h1> : null}
+            {top < .1 ? <h1 style={{ fontSize: '4rem', top: "60%", position: "absolute", }}>Welcome to Scavenge With Friends!</h1> : null}
+            {top < .3 ? <div style={{display:"flex", width: '80%', justifyContent:"space-evenly", height:"10vh", position: "fixed", top: "80%"}}> <button style={{width: '30%', fontSize: "3rem", border:"none", backgroundColor: "rgb(0,0,0,0)"}} onClick={() => {props.history.push('/login')}}>Login</button> <button onClick={() => {props.history.push('/register')}}style={{width: '30%', fontSize: "3rem", border:"none", backgroundColor: "rgb(0,0,0,0)"}}> Register</button></div> : null }
             <Exclamation top={scroll.y / window.height} />
             <Child top={scroll.y / window.height} size="50vh" />
             {top > .6 && top < 1.4 ? <h1 style={{ fontSize: '4rem', top: "140%", position: "absolute", width: "35%", left: "65%", textAlign: "center" }}>This is how it works...</h1> : null}
