@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
-
-export default function CreateAccount() {
+export default function CreateAccount(props) {
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -11,7 +11,14 @@ export default function CreateAccount() {
 
     const handleSubmit = e => {
         e.preventDefault();
-
+        axios.post('https://salty-peak-24943.herokuapp.com/api/register', form)
+        .then(res => {
+            localStorage.setItem('token', res.data.token)
+            props.history.push("/profile");
+        })
+        .catch(err => {
+            console.log(err)
+        })
     };
     const handleChanges = e => {
         setForm({ ...form, [e.target.name]: e.target.value });

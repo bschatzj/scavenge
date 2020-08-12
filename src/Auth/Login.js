@@ -15,18 +15,13 @@ const Login = props => {
 
   const login = e => {
     e.preventDefault();
-    console.log(credentials.email);
-    console.log(credentials.password);
-    console.log(credentials);
     axiosWithAuth()
-      .post("/login/login", credentials)
+      .post("/login", credentials)
       .then(res => {
+        console.log(res)
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("userId", res.data.id);
-        console.log(res.data);
-        // localStorage.setItem("userId", res.data.user_id);
-        // props.history.push(`/chefdashboard/${localStorage.getItem("userId")}`);
-        props.history.push("/loading");
+        localStorage.setItem('id', res.data.user.user_id)
+        props.history.push("/profile");
       })
       .catch(err => console.log(err));
   };
@@ -52,7 +47,7 @@ const Login = props => {
             value={credentials.password}
             onChange={handleChange}
         />
-        <button style={{fontSize:"2.5rem", width:'60%', marginLeft: "20%"}} type="submit">Sign Up</button>
+        <button style={{fontSize:"2.5rem", width:'60%', marginLeft: "20%"}} type="submit">Login</button>
 
         <Link
             style={{
