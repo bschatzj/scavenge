@@ -67,7 +67,7 @@ export default function Profile() {
                 <h1>My Current Games</h1>
                 {games.length > 0 ?
                     <div>{games.map(game => (
-                        <Link style={{ fontSize: "3rem", color: "black", textDecoration: 'None', }} to={game.game}>
+                        <Link style={{ fontSize: "3rem", color: "black", textDecoration: 'None', }} to={`/game/${game.game}`}>
                             <div >
                                 {game.game}
                             </div>
