@@ -17,7 +17,7 @@ export default function Profile() {
     const [visible, setVisible] = useState(true)
 
     useEffect(() => {
-        axiosWithAuth().get('https://salty-peak-24943.herokuapp.com/api/profile/games/1')
+        axiosWithAuth().get(`https://salty-peak-24943.herokuapp.com/api/profile/games/${localStorage.getItem('id')}`)
             .then(res => {
                 console.log(res)
                 setGames(res.data.gameList)
@@ -60,6 +60,8 @@ export default function Profile() {
         console.log(gameInfo)
     };
 
+
+    console.log(publicGames)
     return (
         <div>
             <User setVisible={setVisible} />
@@ -79,16 +81,16 @@ export default function Profile() {
             <div style={{ position: "fixed", left: "64%", top: "40%", height: "59%", display: "flex", flexDirection: "column", alignItems: "center", width: "35%", borderLeft: "5px solid black", borderTop: "5px solid black", overflow: "auto" }}>
 
                 <h1>Current Open Games</h1>
-                {games.length > 0 ?
+                {publicGames.length > 0 ?
                     <div>{publicGames.map(game => (
-                        <Link style={{ fontSize: "3rem", color: "black", textDecoration: 'None', }} to={game.game}>
+                        <Link style={{ fontSize: "3rem", color: "black", textDecoration: 'None', }} to={`/game/${game.game_title}`}>
                             <div >
                                 {game.game_title}
                             </div>
                         </Link>
                     ))}
                     </div>
-                    : <h1>Not a part of any games yet....</h1>}
+                    : <h1>No public games currently available....</h1>}
             </div>
             {visible ? <div style={{ position: "absolute", display: "flex", justifyContent: "center", width: "64%", top: "70%", height: "30%" }}>
                 {starting ? null : <button style={{ width: "70%", height: "20%", fontSize: "2rem", backgroundColor: "black", color: "white", border: "none" }} onClick={() => { setStarting(true) }}>Create Game</button>}
