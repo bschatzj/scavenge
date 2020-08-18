@@ -17,6 +17,16 @@ export default function User(props) {
             .catch(err => { console.log(err) })
     }, [])
 
+
+    useEffect(() => {
+        axiosWithAuth().get(`/profile/profile/${localStorage.getItem('id')}`)
+            .then(res => {
+                console.log(res)
+                setUser(res.data.profile)
+            })
+            .catch(err => { console.log(err) })
+    }, [])
+
     const handlePicture = picture => {
         setUser({ ...user, icon: picture })
     }
