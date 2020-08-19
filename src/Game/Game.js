@@ -28,11 +28,10 @@ export default function Game(props) {
     }, [gameInfo])
 
 
-    console.log(gameInfo)
-    console.log(playerIDs)
+    console.log(players)
     return (
         <div>
-            {playerIDs.includes(parseInt(localStorage.getItem('id'))) || gameInfo.gameInfo.private === false ? <div>Welcome Back!</div> : <div style={{position:"fixed", height:"100vh", width:"100vw", backgroundColor:"black", top:"0"}}><PrivateGame password={gameInfo.gameInfo} /></div>}
+            {playerIDs.includes(parseInt(localStorage.getItem('id'))) || gameInfo.gameInfo.private === false ? <div>Welcome Back!</div> : <div style={{position:"fixed", height:"100vh", width:"100vw", backgroundColor:"black", top:"0"}}><PrivateGame password={gameInfo.gameInfo} setPlayers={setPlayerIDs} players={playerIDs}/></div>}
 
             {players.map(players => (
                 <>

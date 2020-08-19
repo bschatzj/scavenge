@@ -23,6 +23,7 @@ export default function PrivateGame(props) {
 
 
     const JoinGame = () => {
+        props.setPlayers([...props.playerIDs, parseInt(localStorage.getItem('id'))])
         axiosWithAuth().post(`https://salty-peak-24943.herokuapp.com/api/game/joingame`, { 'name': user.display_name, 'user': parseInt(localStorage.getItem('id')), 'game': game })
             .then(res => { console.log(res) })
             .catch(err => { console.log(err) })
