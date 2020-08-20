@@ -6,6 +6,8 @@ import Login from './Auth/Login'
 import Register from './Auth/Register'
 import Profile from './Profile/Profile'
 import Game from './Game/Game'
+import TaskDisplay from './Game/TaskDisplay';
+
 function App() {
   return (
     <Switch>
@@ -13,7 +15,8 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
       <Route path="/profile" component={Profile} />
-      <Route path="/game/:id" component={Game} />
+      <Route exact path="/game/:id" component={Game} />
+      <Route exact path="/game/:id/:task" component={TaskDisplay} />
     </Switch>
   );
 }
