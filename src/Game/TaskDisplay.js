@@ -18,6 +18,7 @@ export default function TaskDisplay() {
         description: "",
         photo: "",
         user: parseInt(localStorage.getItem('id')),
+        game: game
     })
     const [submitted, setSubmitted] = useState(false)
     const [taskInfo, setTaskInfo] = useState('')

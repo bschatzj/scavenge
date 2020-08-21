@@ -32,7 +32,7 @@ export default function Emailer(props) {
     const handleInvite = e => {
         if(email.email.includes('@' && ".")){
         axiosWithAuth().post('/email/send', email)
-        .then(res => {setEmail({...email, email:""})})
+        .then(res => {setEmail({...email, email:""}) })
         .catch(err => {console.log(err)})
         }
         else{

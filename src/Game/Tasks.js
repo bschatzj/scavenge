@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
@@ -27,16 +27,33 @@ export default function Tasks(props) {
 
     }
 
+    const ids = []
+    useEffect(() => {
+        if (props.subs) {
+            props.subs.map(id => {
+                ids.push(id)
+            })
+        }
+    }, [props])
+
+    console.log(ids)
     console.log(message)
     return (
         <div style={{ width: "60vw", display: "flex", flexDirection: "column", alignItems: "center", marginLeft: "7.5vw" }}>
             <div style={{ backgroundColor: "rgb(295, 255, 217)", borderRadius: "5%", width: "100%" }}>
                 <h1 style={{ textAlign: "center", fontSize: "3rem", textDecoration: "underline" }}>Tasks</h1>
                 {props.tasks.map(task => (
-                    <Link to={`${location.pathname}/${task.task_id}`} style={{ width: "100%", textDecoration: "none" }}>
-                        <h1 style={{ borderBottom: "3px solid black", padding: "1%", paddingLeft:"3%" }}>{task.title}</h1>
+                    <Link to={`${location.pathname}/${task.task_id}`} style={{ width: "100%", textDecoration: "none", color:"black"}}>
+                        <div style={{display: "flex", width: "100%", justifyContent: "space-evenly", borderBottom:"3px solid black"}}>
+                            <h1 style={{ paddingBottom: "0", width:"60%" }}>{task.title}</h1>
+                            {props.subs.map(thing => { if (thing.task == task.task_id && thing.user == localStorage.getItem('id')) { return (<span style={{ fontSize: "3rem" , width:"20%", textAlign:"center"}}>&#10003;</span>) } else{ return(<h1 style={{width:"20%"}}>Incomplete</h1>)} })}
+                        </div>
                     </Link>
                 ))}
+
+
+
+
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     {newTask ? <button style={{ margin: "2%", height: "3rem", width: "45%", cursor: "pointer", border: "2px solid black", fontSize: "3rem", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => { addTask() }}>Add Task</button> :
                         <button style={{ margin: "2%", height: "3rem", width: "45%", border: "2px solid black", cursor: "pointer", fontSize: "3rem", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => { setNewTask(true) }}>Create New Task</button>
