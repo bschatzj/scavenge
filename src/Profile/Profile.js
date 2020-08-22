@@ -16,6 +16,7 @@ export default function Profile() {
     const [starting, setStarting] = useState(false)
     const [visible, setVisible] = useState(true)
 
+
     useEffect(() => {
         axiosWithAuth().get(`https://salty-peak-24943.herokuapp.com/api/profile/games/${localStorage.getItem('id')}`)
             .then(res => {
@@ -92,7 +93,7 @@ export default function Profile() {
                     </div>
                     : <h1>No public games currently available....</h1>}
             </div>
-            {visible ? <div style={{ position: "absolute", display: "flex", justifyContent: "center", width: "64%", top: "70%", height: "30%" }}>
+            {visible ? <div style={{ position: "absolute", display: "flex", justifyContent: "center", width: "64%", top: "80%", height: "30%" }}>
                 {starting ? null : <button style={{ width: "70%", height: "20%", fontSize: "2rem", backgroundColor: "black", color: "white", border: "none" }} onClick={() => { setStarting(true) }}>Create Game</button>}
                 {starting ?
                     <>
