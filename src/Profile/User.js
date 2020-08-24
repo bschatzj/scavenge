@@ -34,6 +34,7 @@ export default function User(props) {
     }
 
     const handleName = e => {
+        props.setUser(e.target.value)
         setUser({ ...user, 'display_name': e.target.value })
     }
 

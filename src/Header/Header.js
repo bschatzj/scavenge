@@ -19,8 +19,8 @@ export default function Header() {
         if (location.includes('/game')){
             setWidth('75vw')
         }
-        if (location.substr(6).includes('/')){
-            setWidth('100vw')
+        if (location.substr(6).includes('/task')){
+            setWidth('99vw')
         }
     }, [location])
 
@@ -28,6 +28,7 @@ export default function Header() {
     console.log(location.substr(6))
     return (
         <div style={{ width: width, height: "10vh", margin: "0", padding: "0", display: "flex", justifyContent: "space-evenly" }}>
+            {location.substr(6).includes('/task/') ? <h1  style={{ cursor: "pointer" }} onClick={() => {history.goBack()}}> &larr; Back</h1> : null}
             <h1 style={{ cursor: "pointer" }} onClick={() => { history.push('/profile') }}>Profile</h1>
             <h1 onClick={() => { history.push('/profile') }} style={{ cursor: "pointer" }}>How To Play</h1>
             <h1 style={{ cursor: "pointer" }} onClick={() => { LogOut() }}>Log Out</h1>

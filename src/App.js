@@ -24,7 +24,7 @@ function App() {
       <Route path="/register" component={Register} />
       <PrivateRoute exact path="/profile" component={Profile} />
       <PrivateRoute exact path="/game/:id" component={Game} />
-      <PrivateRoute exact path="/game/:id/:task" component={TaskDisplay} />
+      <PrivateRoute exact path="/game/:id/task/:task" component={TaskDisplay} />
       <Route path="/" component={Home} />
     </Switch>
     </>
