@@ -66,7 +66,7 @@ export default function Profile() {
     return (
         <div>
             <User setVisible={setVisible} />
-            <div style={{ position: "fixed", left: "64%", height: "40%", display: "flex", flexDirection: "column", alignItems: "center", width: "35%", borderLeft: "5px solid black", overflow: "auto" }}>
+            <div style={{ position: "fixed", left: "64vw", height: "40vh", display: "flex", flexDirection: "column", alignItems: "center", width: "35vw", borderLeft: "5px solid black", overflow: "auto", top: "0" }}>
                 <h1>My Current Games</h1>
                 {games.length > 0 ?
                     <div>{games.map(game => (
@@ -79,7 +79,7 @@ export default function Profile() {
                     </div>
                     : <h1>Not a part of any games yet....</h1>}
             </div>
-            <div style={{ position: "fixed", left: "64%", top: "40%", height: "59%", display: "flex", flexDirection: "column", alignItems: "center", width: "35%", borderLeft: "5px solid black", borderTop: "5px solid black", overflow: "auto" }}>
+            <div style={{ position: "fixed", left: "64vw", top: "40vh", height: "59vh", display: "flex", flexDirection: "column", alignItems: "center", width: "35vw", borderLeft: "5px solid black", borderTop: "5px solid black", overflow: "auto" }}>
 
                 <h1>Current Open Games</h1>
                 {publicGames.length > 0 ?
@@ -93,7 +93,7 @@ export default function Profile() {
                     </div>
                     : <h1>No public games currently available....</h1>}
             </div>
-            {visible ? <div style={{ position: "absolute", display: "flex", justifyContent: "center", width: "64%", top: "80%", height: "30%" }}>
+            {visible ? <div style={{ position: "absolute", display: "flex", justifyContent: "center", width: "64%", top: "90%", height: "30%" }}>
                 {starting ? null : <button style={{ width: "70%", height: "20%", fontSize: "2rem", backgroundColor: "black", color: "white", border: "none" }} onClick={() => { setStarting(true) }}>Create Game</button>}
                 {starting ?
                     <>
@@ -116,7 +116,7 @@ export default function Profile() {
                                     value={gameInfo.private} />
                             </div>
                             {gameInfo.private ?
-                                <div style={{ width: "70%" }}>
+                                <div style={{ width: "" }}>
                                     <label style={{ fontSize: "2.5rem", padding: "1%", fontWeight: "bold" }} >Password</label>
                                     <input
                                         style={{ fontSize: "2rem", padding: "1%" }}
@@ -125,8 +125,8 @@ export default function Profile() {
                                         value={gameInfo.password} />
                                 </div>
                                 : null}
-                            <h1 style={{ display:"flex", justifyContent:"center", alignItems:"center", width: "70%", height: "20%", fontSize: "2rem", backgroundColor: "black", color: "white", border: "none" }} onClick={() => { CreateGame() }}>Start Game!</h1>
-                            <h1 style={{ display:"flex", justifyContent:"center", alignItems:"center", width: "70%", height: "20%", fontSize: "2rem", backgroundColor: "black", color: "white", border: "none" }} onClick={() => { setStarting(false)}}>Cancel</h1>
+                            <h1 style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "70%", height: "20%", fontSize: "2rem", backgroundColor: "black", color: "white", border: "none" }} onClick={() => { CreateGame() }}>Start Game!</h1>
+                            <h1 style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "70%", height: "20%", fontSize: "2rem", backgroundColor: "black", color: "white", border: "none" }} onClick={() => { setStarting(false) }}>Cancel</h1>
                         </form>
 
                     </>

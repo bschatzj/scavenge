@@ -9,6 +9,7 @@ export default function Tasks(props) {
     const [task, setTask] = useState({ title: "", description: "" })
     const [newTask, setNewTask] = useState(false)
     const [message, setMessage] = useState('')
+    const [completed, setCompleted] = useState([])
 
     const handleChange = e => {
         console.log(task)
@@ -34,24 +35,34 @@ export default function Tasks(props) {
                 ids.push(id)
             })
         }
+
+
+        if (props.subs) {
+            props.subs.map(thing => {
+                if (thing.user == localStorage.getItem('id')) {
+                    completed.push(thing.task)
+                }
+            })
+        }
     }, [props])
 
-    console.log(ids)
-    console.log(message)
+
+
+
+console.log(completed)
+
     return (
         <div style={{ width: "60vw", display: "flex", flexDirection: "column", alignItems: "center", marginLeft: "7.5vw" }}>
             <div style={{ backgroundColor: "rgb(295, 255, 217)", borderRadius: "5%", width: "100%" }}>
                 <h1 style={{ textAlign: "center", fontSize: "3rem", textDecoration: "underline" }}>Tasks</h1>
                 {props.tasks.map(task => (
-                    <Link to={`${location.pathname}/${task.task_id}`} style={{ width: "100%", textDecoration: "none", color:"black"}}>
-                        <div style={{display: "flex", width: "100%", justifyContent: "space-evenly", borderBottom:"3px solid black"}}>
-                            <h1 style={{ paddingBottom: "0", width:"60%" }}>{task.title}</h1>
-                            {props.subs.map(thing => { if (thing.task == task.task_id && thing.user == localStorage.getItem('id')) { return (<span style={{ fontSize: "3rem" , width:"20%", textAlign:"center"}}>&#10003;</span>) } else{ return(<h1 style={{width:"20%"}}>Incomplete</h1>)} })}
+                    <Link to={`${location.pathname}/${task.task_id}`} style={{ width: "100%", textDecoration: "none", color: "black" }}>
+                        <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly", borderBottom: "3px solid black" }}>
+                            <h1 style={{ paddingBottom: "0", width: "60%" }}>{task.title}</h1>
+                            {completed.includes(task.task_id) ? <span style={{ fontSize: "3rem" , width:"20%", textAlign:"center"}}>&#10003;</span> :<h1 style={{width:"20%"}}>Incomplete</h1>}
                         </div>
                     </Link>
                 ))}
-
-
 
 
                 <div style={{ display: "flex", justifyContent: "center" }}>

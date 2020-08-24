@@ -53,7 +53,7 @@ export default function User(props) {
     }
 
     return (
-        <div style={{ position: "absolute", width: '63%', display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div style={{ position: "absolute", width: '63vw', display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h1 style={{ textAlign:"center"}}>{message}</h1>
             <img onClick={() => { setDisplayed() }} src={user.icon} style={{ cursor: "pointer", width: "40vw", height: "55vh", borderRadius: "50%", border: "3px solid black", backgroundColor: "white" }} alt="your icon" />
             <h1>{user.display_name}</h1>
