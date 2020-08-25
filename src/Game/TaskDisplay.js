@@ -8,9 +8,10 @@ export default function TaskDisplay() {
     const [image, setImage] = useState('')
     const [loading, setLoading] = useState(false)
     const location = useLocation().pathname
+    const lastIndex = location.lastIndexOf('/task');
     const lastslashindex = location.lastIndexOf('/');
     const id = location.substring(lastslashindex + 1)
-    const game = location.substring(6, lastslashindex)
+    const game = location.substring(6, lastIndex)
     const [subs, setSubs] = useState([])
     const [adding, setAdding] = useState(false)
     const [submit, setSubmit] = useState({
@@ -22,6 +23,8 @@ export default function TaskDisplay() {
     })
     const [submitted, setSubmitted] = useState(false)
     const [taskInfo, setTaskInfo] = useState('')
+    const [gameInfo, setGameInfo] = useState({ gameInfo: { end_date: 100000000000000000000000000000 } })
+    const [voting, setVoting] = useState(false)
 
     useEffect(() => {
         axiosWithAuth().post(`/game/task/${id}`, { 'game': game })
@@ -30,11 +33,29 @@ export default function TaskDisplay() {
 
 
         axiosWithAuth().get(`/game/subs/${id}`)
-            .then(res => { console.log(res) 
-                setSubs(res.data.posts) })
+            .then(res => {
+                console.log(res)
+                setSubs(res.data.posts)
+            })
+            .catch(err => { console.log(err) })
+
+
+        axiosWithAuth().get(`/game/game/${game}`)
+            .then(res => { setGameInfo(res.data) })
             .catch(err => { console.log(err) })
 
     }, [])
+
+    useEffect(() => {
+        console.log(parseInt(gameInfo.gameInfo.end_date))
+        console.log(Date.now())
+        if (parseInt(gameInfo.gameInfo.end_date) < Date.now()) {
+            setVoting(true)
+        }
+        else {
+            setVoting(false)
+        }
+    }, [gameInfo])
 
     useEffect(() => {
         subs.map(subs => {
@@ -78,10 +99,10 @@ export default function TaskDisplay() {
 
     return (
         <div>
-            <h1 style={{fontSize:'4.5rem', textAlign:"center", textDecoration:"underline"}}>{taskInfo.title}</h1>
-            <h1 style={{fontSize:"2.5rem", textAlign:"center"}}>Description: {taskInfo.description}</h1>
-            {submitted ? null : <>{adding ? <button style={{ fontSize: "3rem", width: "40%", marginLeft: "30%" }} onClick={() => { handleSubmit() }}>Submit</button> :
-                <button style={{ fontSize: "3rem", width: "40%", marginLeft: "30%" }} onClick={() => { setAdding(true) }}>New Submission</button>} </>}
+            <h1 style={{ fontSize: '4.5rem', textAlign: "center", textDecoration: "underline" }}>{taskInfo.title}</h1>
+            <h1 style={{ fontSize: "2.5rem", textAlign: "center" }}>Description: {taskInfo.description}</h1>
+            {voting ? null : <>{submitted ? null : <>{adding ? <button style={{ fontSize: "3rem", width: "40%", marginLeft: "30%" }} onClick={() => { handleSubmit() }}>Submit</button> :
+                <button style={{ fontSize: "3rem", width: "40%", marginLeft: "30%" }} onClick={() => { setAdding(true) }}>New Submission</button>} </>} </>}
             {adding ? <div style={{ display: "flex", flexDirection: 'column', marginLeft: "20%", width: "60%" }}>
                 <label style={{ fontSize: "3rem" }}>Photo: </label>
                 <input
@@ -113,19 +134,19 @@ export default function TaskDisplay() {
 
 
             {subs.length > 0 ?
-                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly", padding:" 5%  0%" }}> {
+                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly", padding: " 5%  0%" }}> {
                     subs.map(sub => (
                         <div style={{ width: "45%" }}>
                             <h1>Title: {sub.title}</h1>
                             <img style={{ width: "99%", border: "3px solid black" }} src={sub.photo} alt={sub.description} />
                             <h3>Description: {sub.description}</h3>
-                            <button style={{width:"60%", marginLeft:"25%", fontSize:"3rem"}}>^ Vote ^</button>
+                            {voting ? <button style={{ width: "60%", marginLeft: "25%", fontSize: "3rem" }}>^ Vote ^</button> : null}
                         </div>
                     ))
                 }
                 </div>
                 :
-                <h1 style={{marginLeft:"10%", marginTop:"10%"}}>No submissions for this task yet! Be the first</h1>
+                <h1 style={{ marginLeft: "10%", marginTop: "10%" }}>No submissions for this task yet! Be the first</h1>
             }
         </div>
     )

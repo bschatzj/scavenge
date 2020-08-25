@@ -121,7 +121,7 @@ export default function Profile() {
                             </div>
                             <div style={{ display: "flex", width: "70%", alignItems:"center" }}>
                                 <label style={{ fontSize: "2.5rem", padding: "1%", fontWeight: "bold", width:"40%" }}>End Date</label>
-                                <DatePicker  name="end_date" selected={displayDate} onChange={handleDate} style={{fontSize:"2.5rem"}} />
+                                <DatePicker id="date" name="end_date" selected={displayDate} onChange={handleDate} style={{fontSize:"2.5rem"}} />
                             </div>
                             <div style={{ width: "70%", display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
                                 <label style={{ fontSize: "2.5rem", padding: "1%", fontWeight: "bold" }}>Private?</label>
