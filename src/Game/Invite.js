@@ -14,7 +14,7 @@ export default function Emailer(props) {
         setEmail({
             email: "",
             message: `You have been invited to a scavenger hunt! ${"\n"}
-        If you would like to join please make an account at ... Then this link is to the game ...${location.pathname}! ${"\n"}
+        If you would like to join please make an account at https://scavenger.vercel.app/register Then this link is to the game https://scavenger.vercel.app${location.pathname}! ${"\n"}
 
         ${props.password ? `One last thing there will be a password to get into the game. The password is: ${props.password}` : ""}
 
