@@ -56,7 +56,7 @@ export default function Game(props) {
         if (playerIDs.includes(parseInt(localStorage.getItem('id')))) {
             setInGame(true)
         }
-    }, [playerIDs])
+    }, [playerIDs])  
 
     const JoinGame = (game) => {
         axiosWithAuth().post(`https://salty-peak-24943.herokuapp.com/api/game/joingame`, { 'name': profile.display_name, 'user': parseInt(localStorage.getItem('id')), 'game': game })
