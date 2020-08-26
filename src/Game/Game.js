@@ -12,10 +12,21 @@ export default function Game(props) {
     const [playerIDs, setPlayerIDs] = useState([])
     const [tasks, setTasks] = useState([])
     const [voting, setVoting] = useState(false)
-
+    const [inGame, setInGame] = useState(false)
+    const [profile, setProfile] = useState('')
+    
     useEffect(() => {
         axiosWithAuth().get(`/game/game/${game}`)
             .then(res => { setGameInfo(res.data) })
+            .catch(err => { console.log(err) })
+
+
+
+            axiosWithAuth().get(`/profile/profile/${localStorage.getItem('id')}`)
+            .then(res => {
+                console.log(res)
+                setProfile(res.data.profile)
+            })
             .catch(err => { console.log(err) })
     }, [])
 
@@ -37,12 +48,26 @@ export default function Game(props) {
                 .catch(err => { console.log(err) })
         }
 
+
+
     }, [gameInfo])
 
+    useEffect(() => {
+        if (playerIDs.includes(parseInt(localStorage.getItem('id')))) {
+            setInGame(true)
+        }
+    }, [playerIDs])
 
+    const JoinGame = (game) => {
+        axiosWithAuth().post(`https://salty-peak-24943.herokuapp.com/api/game/joingame`, { 'name': profile.display_name, 'user': parseInt(localStorage.getItem('id')), 'game': game })
+            .then(res => { window.location.reload()})
+            .catch(err => { console.log(err) })
+    }
 
+    console.log(gameInfo)
     return (
         <div style={{ width: "75vw" }}>
+            {inGame ? null : <button style={{width:"100%", fontSize:"3rem"}}onClick={() => {JoinGame(gameInfo.gameInfo.game_title)}}>JOIN THIS GAME</button>}
             {playerIDs.includes(parseInt(localStorage.getItem('id'))) || gameInfo.gameInfo.private === false ? <h1 style={{ fontSize: "4rem", textAlign: "center" }}>{gameInfo.gameInfo.game_title}</h1> : <div style={{ position: "fixed", height: "100vh", width: "100vw", backgroundColor: "black", top: "0", zIndex: "10000000" }}><PrivateGame password={gameInfo.gameInfo} setPlayers={setPlayerIDs} players={playerIDs} /></div>}
             <Countdown endTime={gameInfo.gameInfo.end_date} setVoting={setVoting} />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", position: "fixed", left: "75vw", width: "25vw", height: "100vh", top: "0", overflow: "auto", borderLeft: "5px solid black" }}>
@@ -58,8 +83,10 @@ export default function Game(props) {
                     ))}
                 </div>
             </div>
+            { inGame ?
+            <>
             <Tasks tasks={tasks} voting={voting} id={gameInfo.gameInfo.game_id} subs={gameInfo.Subs} setTasks={setTasks} />
-            <Email password={gameInfo.gameInfo.password} />
+            <Email password={gameInfo.gameInfo.password} /> </> : null}
         </div>
     )
 }
