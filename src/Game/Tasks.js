@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-
+import './Tasks.css'
 
 export default function Tasks(props) {
     console.log(props)
@@ -53,36 +53,36 @@ export default function Tasks(props) {
 console.log(completed)
 
     return (
-        <div style={{ width: "60vw", display: "flex", flexDirection: "column", alignItems: "center", marginLeft: "7.5vw" }}>
-            <div style={{ backgroundColor: "rgb(295, 255, 217)", borderRadius: "5%", width: "100%" }}>
-                <h1 style={{ textAlign: "center", fontSize: "3rem", textDecoration: "underline" }}>Tasks</h1>
+        <div className="TasksDiv" >
+            <div className="TaskList">
+                <h1 className="ListTitle">Tasks</h1>
                 {props.tasks.map(task => (
-                    <Link to={`${location.pathname}/task/${task.task_id}`} style={{ width: "100%", textDecoration: "none", color: "black" }}>
-                        <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly", borderBottom: "3px solid black" }}>
-                            <h1 style={{ paddingBottom: "0", width: "60%" }}>{task.title}</h1>
-                            {completed.includes(task.task_id) ? <span style={{ fontSize: "3rem" , width:"20%", textAlign:"center"}}>&#10003;</span> :<h1 style={{width:"20%"}}>Incomplete</h1>}
+                    <Link to={`${location.pathname}/task/${task.task_id}`} className="Link">
+                        <div className="TaskContainer">
+                            <h1 className="TaskTitle">{task.title}</h1>
+                            {completed.includes(task.task_id) ? <span className="CheckMark">&#10003;</span> :<h1 style={{width:"20%"}}>Incomplete</h1>}
                         </div>
                     </Link>
                 ))}
 
-
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                    {newTask ? <button style={{ margin: "2%", height: "3rem", width: "45%", cursor: "pointer", border: "2px solid black", fontSize: "3rem", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => { addTask() }}>Add Task</button> :
-                        <button style={{ margin: "2%", height: "3rem", width: "45%", border: "2px solid black", cursor: "pointer", fontSize: "3rem", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => { setNewTask(true) }}>Create New Task</button>
+                <div className="AddTask">
+                    {newTask ? <button className="TaskButton" onClick={() => { addTask() }}>Add Task</button> :
+                        <button className="TaskButton" onClick={() => { setNewTask(true) }}>Create New Task</button>
                     }
                 </div>
-                <h1 style={{ color: "red" }}>{message}</h1>
-                {newTask ? <div style={{ display: "flex", flexDirection: "column", width: "100%", }}>
-                    <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-                        <label style={{ width: "30%", fontSize: "3rem", padding: "1rem" }}>Task Title: </label>
-                        <input name="title" value={task.title} onChange={handleChange} style={{ width: "70%", fontSize: "2rem", margin: "3rem" }} />
+
+                <h1 className="Error">{message}</h1>
+                {newTask ? <div className="TaskForm">
+                    <div className="FormDiv">
+                        <label className="FormLabel">Task Title: </label>
+                        <input name="title" value={task.title} onChange={handleChange} className="FormInput" />
                     </div>
                     
-                    <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-                        <label style={{ width: "30%", fontSize: "3rem", padding: "1rem" }}>Description: </label>
-                        <textarea name="description" value={task.description} onChange={handleChange} style={{ width: "70%", fontSize: '2rem', height: '8rem', resize: "none", margin: "3rem" }} />
+                    <div className="FormDiv">
+                        <label className="FormLabel">Description: </label>
+                        <textarea name="description" value={task.description} onChange={handleChange} className="TextArea" />
                     </div>
-                    <h1 style={{ fontSize: "3rem", textAlign: "center", cursor: "pointer" }} onClick={() => { setNewTask(false) }} >Cancel</h1>
+                    <h1 className="Cancel" onClick={() => { setNewTask(false) }} >Cancel</h1>
                 
                 </div>
                     : null}

@@ -4,7 +4,7 @@ import PrivateGame from './PrivateGame'
 import Tasks from './Tasks'
 import Email from './Invite'
 import Countdown from './Countdown'
-
+import './Game.css'
 export default function Game(props) {
     const game = (props.match.params.id)
     const [gameInfo, setGameInfo] = useState({ Players: [], gameInfo: { private: true } })
@@ -66,17 +66,17 @@ export default function Game(props) {
 
     console.log(gameInfo)
     return (
-        <div style={{ width: "75vw" }}>
-            {inGame ? null : <button style={{width:"100%", fontSize:"3rem"}}onClick={() => {JoinGame(gameInfo.gameInfo.game_title)}}>JOIN THIS GAME</button>}
-            {playerIDs.includes(parseInt(localStorage.getItem('id'))) || gameInfo.gameInfo.private === false ? <h1 style={{ fontSize: "4rem", textAlign: "center" }}>{gameInfo.gameInfo.game_title}</h1> : <div style={{ position: "fixed", height: "100vh", width: "100vw", backgroundColor: "black", top: "0", zIndex: "10000000" }}><PrivateGame password={gameInfo.gameInfo} setPlayers={setPlayerIDs} players={playerIDs} /></div>}
+        <div className="Game">
+            {inGame ? null : <button className="JoinGame" onClick={() => {JoinGame(gameInfo.gameInfo.game_title)}}>JOIN THIS GAME</button>}
+            {playerIDs.includes(parseInt(localStorage.getItem('id'))) || gameInfo.gameInfo.private === false ? <h1 className="Title">{gameInfo.gameInfo.game_title}</h1> : <div className="Private"><PrivateGame password={gameInfo.gameInfo} setPlayers={setPlayerIDs} players={playerIDs} /></div>}
             <Countdown endTime={gameInfo.gameInfo.end_date} setVoting={setVoting} />
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", position: "fixed", left: "75vw", width: "25vw", height: "100vh", top: "0", overflow: "auto", borderLeft: "5px solid black" }}>
-                <h1 style={{ position: "absolute", fontSize: "3rem", margin: "0", backgroundColor: "black", width: "25vw", height: "12vh", color: "white", textAlign: "center" }}>Players</h1>
-                <div style={{ display: "flex", justifyContent: "space-evenly", flexWrap: "wrap", width: "25vw", flexDirection: "column", top: "12vh", position: "fixed", overflow: "auto" }}>
+            <div className="PlayerDiv">
+                <h1 className="Players">Players</h1>
+                <div className="PlayerDisplay">
                     {players.map(players => (
                         <>
-                            <div style={{ display: "flex", alignItems: "center", flexDirection: "column", borderTop: "5px solid black", width: "100%", paddingTop: "10px" }}>
-                                <img style={{ borderRadius: "50%", height: "25vh", width: "20vw" }} src={players.icon} />
+                            <div className="Individual">
+                                <img className="PlayerPic" src={players.icon} />
                                 <h1> {players.display_name}</h1>
                             </div>
                         </>

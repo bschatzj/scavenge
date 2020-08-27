@@ -88,5 +88,6 @@
     background-Color: black;
     color: white;
     border: none;
-    padding:1%
+    padding:1%;
+    cursor: pointer;
 }
