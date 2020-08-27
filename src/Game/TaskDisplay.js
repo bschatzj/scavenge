@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
-
+import './TaskDisplay.css'
 
 export default function TaskDisplay() {
     const [image, setImage] = useState('')
@@ -120,19 +120,19 @@ export default function TaskDisplay() {
 
     console.log(votes)
     return (
-        <div style={{width:"99vw"}}>
-            <h1 style={{ fontSize: '4.5rem', textAlign: "center", textDecoration: "underline" }}>{taskInfo.title}</h1>
-            <h1 style={{ fontSize: "2.5rem", textAlign: "center" }}>Description: {taskInfo.description}</h1>
+        <div className="TaskDisplay">
+            <h1 className="Title">{taskInfo.title}</h1>
+            <h1 className="Description">Description: {taskInfo.description}</h1>
             {submitted ? null :
-                <>{adding ? <button style={{ fontSize: "3rem", width: "40%", marginLeft: "30%" }} onClick={() => { handleSubmit() }}>Submit</button> :
-                    <button style={{ fontSize: "3rem", width: "40%", marginLeft: "30%" }} onClick={() => { setAdding(true) }}>New Submission</button>}
+                <>{adding ? <button className="SubmitButton" onClick={() => { handleSubmit() }}>Submit</button> :
+                    <button className="SubmitButton" onClick={() => { setAdding(true) }}>New Submission</button>}
                 </>}
 
             {
-                adding ? <div style={{ display: "flex", flexDirection: 'column', marginLeft: "20%", width: "60%" }}>
-                    <label style={{ fontSize: "3rem" }}>Photo: </label>
+                adding ? <div className="Form" >
+                    <label className="Label" >Photo: </label>
                     <input
-                        style={{ fontSize: "2rem" }}
+                        className="Input"
                         type="file"
                         name="file"
                         placeholder="Upload an image"
@@ -145,16 +145,16 @@ export default function TaskDisplay() {
                                 {image ?
                                     <>
                                         <h2>Preview:</h2>
-                                        <img src={image} style={{ width: '200px' }} alt="your upload" />
+                                        <img src={image} className="Image" alt="your upload" />
                                     </>
                                     : null
                                 }
                             </div>
                         )}
-                    <label style={{ fontSize: "3rem" }}>Title: </label>
-                    <input style={{ fontSize: "3rem" }} value={submit.title} name="title" onChange={handleChange} />
-                    <label style={{ fontSize: "3rem" }}>Description:</label>
-                    <textarea style={{ fontSize: "3rem", height: "10rem", resize: "none" }} value={submit.description} name="description" onChange={handleChange} />
+                    <label className="Label">Title: </label>
+                    <input className="Label" value={submit.title} name="title" onChange={handleChange} />
+                    <label className="Label">Description:</label>
+                    <textarea className="TextArea" value={submit.description} name="description" onChange={handleChange} />
                 </div> : null
             }
 
@@ -162,15 +162,15 @@ export default function TaskDisplay() {
 
             {
                 subs.length > 0 ?
-                    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly", padding: " 5%  0%", width:"99vw"}}> {
+                    <div className="SubDiv"> {
                         subs.map(sub => (
 
-                            <div style={{ width: "60%" }}>
+                            <div className="Sub">
                                 {console.log(sub)}
-                                <h1 style={{fontSize:"4rem"}}>Title: {sub.title}</h1>
-                                <img style={{ width: "99%", border: "3px solid black" }} src={sub.photo} alt={sub.description} />
+                                <h1 className="SubTitle">Title: {sub.title}</h1>
+                                <img className="SubImg" src={sub.photo} alt={sub.description} />
                                 <h1>Description: {sub.description}</h1>
-                                {voting ? <>{voted ? null : <button style={{ width: "60%", marginLeft: "25%", fontSize: "3rem" }} onClick={() => { Vote(sub.task) }}>^ Vote ^</button>}</> : null}
+                                {voting ? <>{voted ? null : <button className="Vote" onClick={() => { Vote(sub.task) }}>^ Vote ^</button>}</> : null}
                                 {votes.map(vote => {
                                     if(vote.task == sub.task){
                                         
@@ -183,7 +183,7 @@ export default function TaskDisplay() {
                     }
                     </div>
                     :
-                    <h1 style={{ marginLeft: "10%", marginTop: "10%" }}>No submissions for this task yet! Be the first</h1>
+                    <h1 className="NoSubmit">No submissions for this task yet! Be the first</h1>
             }
         </div >
     )

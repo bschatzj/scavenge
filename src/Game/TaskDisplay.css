@@ -1,0 +1,77 @@
+.TaskDisplay{
+    width:99vw
+}
+
+.Title{
+    font-Size: '4.5rem';
+    text-Align: center;
+    text-Decoration: underline 
+}
+
+.Description{
+    font-Size: 2.5rem;
+    text-Align: center
+}
+
+.SubmitButton{
+    font-Size: 3rem;
+    width: 40%;
+    margin-Left: 30% 
+}
+
+.Form{
+    display: flex;
+    flex-Direction: 'column';
+    margin-Left: 20%;
+    width: 60%
+}
+
+.Label{
+    font-Size: 3rem 
+}
+
+.Input{
+    font-size: 2rem;
+}
+
+.Image{
+    width: '200px'
+}
+
+.TextArea{
+    font-Size: 3rem;
+    height: 10rem;
+    resize: none
+}
+
+.SubDiv{
+    display: flex;
+    flex-Wrap: wrap;
+    justify-Content: space-evenly;
+    padding:  5%  0%;
+    width:99vw
+}
+
+.Sub{
+    width: 60%;
+}
+
+.SubTitle{
+    font-Size:4rem
+}
+
+.SubImg{
+    width: 99%;
+    border: 3px solid black
+}
+
+.Vote{
+    width: 60%;
+    margin-Left: 25%;
+    font-Size: 3rem 
+}
+
+.NoSubmit{
+    margin-Left: 10%;
+    margin-Top: 10% 
+}

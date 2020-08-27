@@ -35,7 +35,9 @@
 
 .TaskTitle{
     padding-Bottom: 0;
-    width: 60%
+    width: 60%;
+    margin: 0;
+    font-size: 3rem;
 }
 
 .CheckMark{

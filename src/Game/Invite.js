@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-
+import './Invite.css'
 
 export default function Emailer(props) {
     const location = useLocation()
@@ -40,16 +40,16 @@ export default function Emailer(props) {
         }
     }
     return (
-        <div style={{ width: "60vw", marginLeft: "7.5vw" }}>
-            <h1 style={{ fontSize: "4rem", cursor: "pointer" }} onClick={() => { setInviting(true) }}>Invite some friends!</h1>
+        <div className="InviteDiv">
+            <h1 className="Invite" onClick={() => { setInviting(true) }}>Invite some friends!</h1>
             {inviting ?
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                    <label style={{fontSize:"3rem"}}>Recipient Email:</label>
-                    <input style={{ width: "30vw", fontSize:"2rem" }} value={email.email} onChange={handleChange} name="email"></input>
-                    <label style={{ fontSize:'3rem' }}>Message:</label>
-                    <textarea style={{ resize: 'none', width: "58vw", height: "50vh", fontSize:"2rem" }} value={email.message} onChange={handleChange} name="message"></textarea>
-                    <button  style={{ marginTop: "2%", height: "3rem", width: "45%", border: "2px solid black", cursor: "pointer", fontSize: "3rem", display: "flex", alignItems: "center", justifyContent: "center", marginLeft:"25%" }} onClick={() => {handleInvite()}}>Send Invitation</button>
-                    <button  style={{ marginTop: "2%", marginBottom:"5%", height: "3rem", width: "45%", border: "2px solid black", cursor: "pointer", fontSize: "3rem", display: "flex", alignItems: "center", justifyContent: "center", marginLeft:"25%" }} onClick={() => {setInviting(false)}}>Cancel</button>
+                <div className="InviteForm">
+                    <label className="Label">Recipient Email:</label>
+                    <input className="InviteInput" value={email.email} onChange={handleChange} name="email"></input>
+                    <label className="Label" >Message:</label>
+                    <textarea className="InviteTextArea" value={email.message} onChange={handleChange} name="message"></textarea>
+                    <button  className="SendInvite" onClick={() => {handleInvite()}}>Send Invitation</button>
+                    <button  className="Cancel" onClick={() => {setInviting(false)}}>Cancel</button>
                 </div>
                 : null
             }
