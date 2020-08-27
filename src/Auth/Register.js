@@ -13,6 +13,8 @@ export default function CreateAccount(props) {
         e.preventDefault();
         axios.post('https://salty-peak-24943.herokuapp.com/api/register', form)
         .then(res => {
+            console.log(res)
+            localStorage.setItem('id', res.data.id)
             localStorage.setItem('token', res.data.token)
             props.history.push("/profile");
         })
