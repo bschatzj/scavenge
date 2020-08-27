@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-
+import './User.css'
 export default function User(props) {
     const [user, setUser] = useState({})
     const [editing, setEditing] = useState(false)
@@ -54,21 +54,21 @@ export default function User(props) {
     }
 
     return (
-        <div style={{ position: "absolute", width: '63vw', display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div className='userPage'>
             <h1 style={{ textAlign:"center"}}>{message}</h1>
-            <img onClick={() => { setDisplayed() }} src={user.icon} style={{ cursor: "pointer", width: "40vw", height: "55vh", borderRadius: "50%", border: "3px solid black", backgroundColor: "white" }} alt="your icon" />
+            <img onClick={() => { setDisplayed() }} src={user.icon} className="ProfilePic" alt="your icon" />
             <h1>{user.display_name}</h1>
 
             {editing ?
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div className="IconSelect">
                     <h1 onClick={() => { update() }} style={{ cursor: "pointer" }}>Save Changes</h1>
-                    <div style={{ fontSize: "2rem" }}>
+                    <div className="Input">
                         <label>Display Name:</label>
-                        <input style={{ fontSize: "2rem" }} onChange={handleName} value={user.display_name} />
+                        <input className="Input" onChange={handleName} value={user.display_name} />
                     </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly" }}>
+                    <div className="IconDisplay">
                         {IconOptions.map(icon => (
-                            <img onClick={() => { handlePicture(icon) }} src={icon} style={{ cursor: "pointer", width: "160px", backgroundColor: "white", borderRadius: "50%", height: '160px', border: '1px solid black', marginTop: "10px" }} alt="option for icon" />
+                            <img onClick={() => { handlePicture(icon) }} className="Icon" src={icon} alt="option for icon" />
                         ))}
                     </div>
                 </div>

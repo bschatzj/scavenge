@@ -1,0 +1,42 @@
+.userPage{
+    position: absolute;
+    width: 63vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ProfilePic{
+    cursor: pointer;
+     width: 40vw;
+      height: 55vh;
+      border-radius: 50%;
+      border: 3px solid black;
+      background-color: white 
+}
+
+.IconSelect{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.Input{
+    font-size: 2rem;
+}
+
+.IconDisplay{
+    display: flex;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
+}
+
+.Icon{
+    cursor: pointer;
+    width: 160px;
+    background-Color: white;
+    border-Radius: 50%;
+    height: 160px;
+    border: 1px solid black;
+    margin-Top: 10px 
+}
