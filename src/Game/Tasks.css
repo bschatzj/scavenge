@@ -1,0 +1,109 @@
+.TasksDiv{
+    width: 60vw;
+    display: flex;
+    flex-Direction: column;
+    align-Items: center;
+    margin-Left: 7.5vw
+}
+
+.TaskList{
+    background-Color: rgb(295,
+    255,
+    217);
+    border-Radius: 5%;
+    width: 100% 
+}
+
+.ListTitle{
+    text-Align: center;
+    font-Size: 3rem;
+    text-Decoration: underline 
+}
+
+.Link{
+    width: 100%;
+    text-Decoration: none;
+    color: black
+}
+
+.TaskContainer{
+    display: flex;
+    width: 100%;
+    justify-Content: space-evenly;
+    border-Bottom: 3px solid black
+}
+
+.TaskTitle{
+    padding-Bottom: 0;
+    width: 60%;
+    margin: 0;
+    font-size: 3rem;
+}
+
+.CheckMark{
+    font-Size: 3rem ;
+    width:20%;
+    text-Align:center
+}
+
+.AddTask{
+    display: flex;
+    justify-Content: center 
+}
+
+.TaskButton{
+    margin: 2%;
+    height: 3rem;
+    width: 45%;
+    cursor: pointer;
+    border: 2px solid black;
+    font-Size: 3rem;
+    display: flex;
+    align-Items: center;
+    justify-Content: center 
+}
+
+.Error{
+    color: red;
+}
+
+.TaskForm{
+    display: flex;
+    flex-Direction: column;
+    width: 100%;
+    }
+
+.FormDiv{
+    display: flex;
+    justify-Content: space-evenly;
+    align-Items: center
+}
+
+.FormLabel{
+    width: 40%;
+    font-Size: 3rem;
+    padding: 1rem
+}
+
+.FormInput{
+    width: 60%;
+    font-Size: 2rem;
+}
+
+.TextArea{ width: 70%;
+    font-Size: '2rem';
+    height: '8rem';
+    resize: none;
+    margin: 3rem }
+
+
+.Cancel{
+    font-Size: 3rem;
+    text-Align: center;
+    cursor: pointer 
+}
+
+.Incomplete{
+    font-size: 2rem;
+    width: 30%;
+}

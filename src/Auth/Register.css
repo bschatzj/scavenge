@@ -1,0 +1,86 @@
+.RegisterDiv{
+    display: flex;
+    justify-Content: center;
+    align-Items: center;
+    width: 100vw;
+    height: 100vh;
+    flex-Direction: column 
+}
+
+.RegisterTitle{
+    font-Size: 3rem
+}
+
+.RegisterForm{
+    display: flex;
+    flex-Direction: column;
+    justify-Content: space-between;
+    width: 60%;
+    height: 30%;
+    
+    padding: 2% 
+}
+
+.RegisterInput{
+    font-Size:2.5rem
+}
+
+.RegisterButton{
+    font-Size:2.5rem;
+    width:60%;
+    margin-Left: 20%
+}
+
+.RegisterLink{
+    text-Decoration: none;
+    color: #FE0707;
+    font-Size: 2rem;
+    font-Weight: bold
+}
+
+@media (max-width: 800px){
+
+    .RegisterTitle{
+    font-Size: 2.5rem;
+    }
+
+    .RegisterForm{
+        width: 70%;
+    }
+
+    .RegisterInput{
+        font-size: 2rem;
+    }
+
+    .RegisterButton{
+        font-size: 2rem;
+    }
+
+    .RegisterLink{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 500px){
+
+    .RegisterTitle{
+    font-Size: 2rem;
+    }
+
+    .RegisterForm{
+        width: 90%;
+    }
+
+    .RegisterInput{
+        font-size: 1.5rem;
+    }
+
+    .RegisterButton{
+        font-size: 2rem;
+    }
+
+    .RegisterLink{
+        font-size: 1.5rem;
+    }
+}
+

@@ -1,0 +1,72 @@
+.Game{
+    width: 75vw;
+}
+
+.JoinGame{
+    width:100%;
+     font-Size:3rem
+}
+
+.Private{
+    position: fixed;
+     height: 100vh;
+     width: 100vw;
+     background-Color: black;
+     top: 0;
+     z-Index: 10000000 
+}
+
+.Title{
+    font-Size: 4rem;
+     text-Align: center
+}
+
+.PlayerDiv{
+    display: flex;
+     flex-Direction: column;
+     align-Items: center;
+     position: fixed;
+     left: 75vw;
+     width: 25vw;
+     height: 100vh;
+     top: 0;
+     overflow: auto;
+     border-Left: 5px solid black 
+}
+
+.Players{
+    position: absolute;
+     font-Size: 3rem;
+     margin: 0;
+     background-Color: black;
+     width: 25vw;
+     height: 12vh;
+     color: white;
+     text-Align: center
+}
+
+.PlayerDisplay{
+    display: flex;
+     justify-Content: space-evenly;
+     flex-Wrap: wrap;
+     width: 25vw;
+     flex-Direction: column;
+     top: 12vh;
+     position: fixed;
+     overflow: auto 
+}
+
+.Individual{
+    display: flex;
+     align-Items: center;
+     flex-Direction: column;
+     border-Top: 5px solid black;
+     width: 100%;
+     padding-Top: 10px
+}
+
+.PlayerPic{
+    border-Radius: 50%;
+     height: 25vh;
+     width: 20vw 
+}

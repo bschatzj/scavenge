@@ -1,0 +1,87 @@
+.LoginDiv{
+    display: flex;
+    justify-Content: center;
+    align-Items: center;
+    width: 100vw;
+    height: 100vh;
+    flex-Direction: column;
+}
+
+.LoginTitle{
+    font-Size: 3rem;
+}
+
+.LoginForm{
+    display: flex;
+    flex-Direction: column;
+    justify-Content: space-between;
+    width: 60%;
+    height: 30%;
+    
+    padding: 2% 
+}
+
+.LoginInput{
+    font-Size:2.5rem
+}
+
+.LoginButton{
+    font-Size:2.5rem;
+    width:60%;
+    margin-Left: 20%
+}
+
+.LoginLink{
+    text-Decoration: none;
+    color: #FE0707;
+    font-Size: 2rem;
+    font-Weight: bold
+}
+
+@media (max-width: 800px){
+
+    .LoginTitle{
+    font-Size: 2.5rem;
+    }
+
+    .LoginForm{
+        width: 70%;
+    }
+
+    .LoginInput{
+        font-size: 2rem;
+    }
+
+    .LoginButton{
+        font-size: 2rem;
+    }
+
+    .LoginLink{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 500px){
+
+    .LoginTitle{
+    font-Size: 2rem;
+    }
+
+    .LoginForm{
+        width: 90%;
+    }
+
+    .LoginInput{
+        font-size: 1.5rem;
+    }
+
+    .LoginButton{
+        font-size: 2rem;
+    }
+
+    .LoginLink{
+        font-size: 1.5rem;
+    }
+}
+
+

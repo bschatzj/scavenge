@@ -1,0 +1,57 @@
+.InviteDiv{
+    width: 60vw;
+    margin-Left: 7.5vw
+}
+
+.Invite{
+    font-Size: 4rem;
+    cursor: pointer
+}
+
+.InviteForm{
+    display: flex;
+    flex-Direction: column
+}
+
+.Label{
+    font-Size:3rem
+}
+
+.InviteInput{
+    width: 30vw;
+    font-Size:2rem
+}
+
+.InviteTextArea{
+    resize: 'none';
+    width: 58vw;
+    height: 50vh;
+    font-Size:2rem
+}
+
+.SendInvite{
+    margin-Top: 2%;
+    height: 3rem;
+    width: 45%;
+    border: 2px solid black;
+    cursor: pointer;
+    font-Size: 3rem;
+    display: flex;
+    align-Items: center;
+    justify-Content: center;
+    margin-Left:25% 
+}
+
+.Cancel{
+    margin-Top: 2%;
+    margin-Bottom:5%;
+    height: 3rem;
+    width: 45%;
+    border: 2px solid black;
+    cursor: pointer;
+    font-Size: 3rem;
+    display: flex;
+    align-Items: center;
+    justify-Content: center;
+    margin-Left:25% 
+}

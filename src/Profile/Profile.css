@@ -1,0 +1,157 @@
+.MyGames{
+    position: fixed;
+    left: 64vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35vw;
+    border-left: 5px solid black;
+    overflow: auto;
+    top: 0;
+    padding: 1%;
+}
+
+.Link{ 
+    font-size: 3rem;
+    color: black;
+    text-decoration: None;
+}
+
+.OtherGames{ 
+     position: fixed;
+     left: 64vw;
+     top: 40vh;
+     height: 59vh;
+     display: flex;
+     flex-Direction: column;
+     align-Items: center;
+     width: 35vw;
+     border-Left: 5px solid black;
+     border-Top: 5px solid black;
+     overflow: auto;
+     padding: 1%;
+     }
+
+.Profile{
+    position: absolute;
+     display: flex;
+     justify-Content: center;
+     width: 64%;
+     top: 90%;
+     height: 30% 
+}
+
+.ProfileButton{
+    width: 70%;
+     height: 20%;
+     font-Size: 2rem;
+     background-Color: black;
+     color: white;
+     border: none;
+}
+
+.ProfileForm{
+    display: flex;
+    flex-Direction: column;
+    width: 100%;
+    align-Items: center;
+    margin-Top:5%
+}
+
+.ProfileFormInputArea{
+    display: flex;
+    width: 80%;
+    align-Items:center
+}
+
+.ProfileFormLabel{
+    font-Size: 2.5rem;
+    padding: 1%;
+    font-Weight: bold;
+    width:50%
+}
+
+.ProfileFormInput{ 
+    font-Size: 2rem;
+    padding: 1%;
+    width: 60%;
+ }
+
+.FormButtons{
+    display: flex;
+    justify-Content: center;
+    align-Items: center;
+    width: 70%;
+    height: 20%;
+    font-Size: 2rem;
+    background-Color: black;
+    color: white;
+    border: none;
+    padding:1%;
+    cursor: pointer;
+}
+
+.MobileGames{
+    display: none;
+}
+
+@media (max-width: 500px){
+    .MyGames{
+        display: none;
+    }
+
+    .OtherGames{
+        display: none;
+    }
+
+    .MobileGames{
+        display: flex ;
+        width: 80%;
+        margin-left: 10%;
+        flex-direction: column;
+    }
+
+    .ProfilePage{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .Profile{
+        position: relative;
+        width: 100%;
+    }
+
+    .OtherMobileGames{
+    
+        border-top: 3px solid black;
+        font-size: 1rem;
+    }
+
+    .MyMobileGames{
+        font-size: 1rem;
+    }
+
+    .Link{
+        font-size: 1.5rem;
+        
+    }
+
+    .MobileTitle{
+        font-size: 1.5rem;
+    }
+
+    .ProfileFormInput{
+        width: 100%;
+    }
+
+    .ProfileFormLabel{
+        font-size: 2rem;
+        width: 100%;
+    }
+
+    .ProfileFormInputArea{
+        flex-direction: column;
+        width: 90%;
+    }
+}
