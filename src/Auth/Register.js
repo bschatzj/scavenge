@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-
+import './Register.css'
 export default function CreateAccount(props) {
     const [form, setForm] = useState({
         email: "",
@@ -27,35 +27,30 @@ export default function CreateAccount(props) {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: "center", alignItems: "center", width: "100vw", height: "100vh", flexDirection: "column" }}>
-            <h2 style={{ fontSize: "3rem" }}>
+        <div className="RegisterDiv">
+            <h2 className="RegisterTitle">
                 Join the fun!
           </h2>
-            <form style={{ display: 'flex', flexDirection: "column", justifyContent: "space-between", width: "40%", height: '30%', backgroundColor: "", padding: "2%" }} onSubmit={handleSubmit}>
+            <form className="RegisterForm" onSubmit={handleSubmit}>
                 <input
-                style={{fontSize:"2.5rem"}}
+                    className="RegisterInput"
                     type="email"
                     name="email"
                     placeholder="Email"
                     value={form.email}
                     onChange={handleChanges}
                 />
-                <input style={{fontSize:"2.5rem"}}
+                <input  className="RegisterInput"
                     type="password"
                     name="password"
                     placeholder="Password"
                     value={form.password}
                     onChange={handleChanges}
                 />
-                <button style={{fontSize:"2.5rem", width:'60%', marginLeft: "20%"}} type="submit">Sign Up</button>
+                <button className="RegisterButton" type="submit">Sign Up</button>
 
                 <Link
-                    style={{
-                        textDecoration: "none",
-                        color: "#FE0707",
-                        fontSize: "2rem",
-                        fontWeight: "bold"
-                    }}
+                    className="RegisterLink"
                     to="/login"
                 >
                     Already have an Account?

@@ -76,9 +76,8 @@ export default function Profile() {
         console.log(gameInfo)
     };
 
-    console.log(gameInfo)
     return (
-        <div>
+        <div className="ProfilePage">
             <User setVisible={setVisible} user={user} setUser={setUser} />
             <div className="MyGames">
                 <h1>My Current Games</h1>
@@ -114,20 +113,20 @@ export default function Profile() {
                 {starting ?
                     <>
                         <form className="ProfileForm" >
-                            <div className="FormInputArea">
-                                <label className="FormLabel">Game Title</label>
+                            <div className="ProfileFormInputArea">
+                                <label className="ProfileFormLabel">Game Title</label>
                                 <input
-                                    className="FormInput"
+                                    className="ProfileFormInput"
                                     onChange={handleChange}
                                     name="title"
                                     value={gameInfo.title} />
                             </div>
-                            <div className="FormInputArea">
-                                <label className="FormLabel">End Date</label>
+                            <div className="ProfileFormInputArea">
+                                <label className="ProfileFormLabel">End Date</label>
                                 <DatePicker id="date" name="end_date" selected={displayDate} onChange={handleDate} style={{ fontSize: "2.5rem" }} />
                             </div>
-                            <div className="FormInputArea">
-                                <label className="FormLabel">Private?</label>
+                            <div className="ProfileFormInputArea">
+                                <label className="ProfileFormLabel">Private?</label>
                                 <input
                                     style={{ transform: "scale(3)" }}
                                     onChange={handleChecked}
@@ -136,10 +135,10 @@ export default function Profile() {
                                     value={gameInfo.private} />
                             </div>
                             {gameInfo.private ?
-                                <div className="FormInputArea" >
-                                    <label className="FormLabel" >Password</label>
+                                <div className="ProfileFormInputArea" >
+                                    <label className="ProfileFormLabel" >Password</label>
                                     <input
-                                        className="FormInput"
+                                        className="ProfileFormInput"
                                         onChange={handleChange}
                                         name="password"
                                         value={gameInfo.password} />
@@ -154,6 +153,36 @@ export default function Profile() {
             </div>
                 : null}
 
+
+            <div className="MobileGames">
+                <div className="MyMobileGames">
+                    <h1 className="MobileTitle">My Current Games</h1>
+                    {games.length > 0 ?
+                        <div>{games.map(game => (
+                            <Link className="Link" to={`/game/${game.game}`}>
+                                <div >
+                                    {game.game}
+                                </div>
+                            </Link>
+                        ))}
+                        </div>
+                        : <h1>Not a part of any games yet....</h1>}
+                </div>
+                <div className="OtherMobileGames">
+
+                    <h1 className="MobileTitle">Current Open Games</h1>
+                    {publicGames.length > 0 ?
+                        <div>{publicGames.map(game => (
+                            <Link className="Link" to={`/game/${game.game_title}`}>
+                                <div>
+                                    {game.game_title}
+                                </div>
+                            </Link>
+                        ))}
+                        </div>
+                        : <h1 className="MobileTitle">No public games currently available....</h1>}
+                </div>
+            </div>
         </div>
     )
 }

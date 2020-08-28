@@ -54,28 +54,28 @@
 .ProfileForm{
     display: flex;
     flex-Direction: column;
-    justify-Content: space-evenly;
     width: 100%;
     align-Items: center;
-    margin-Top:15%
+    margin-Top:5%
 }
 
-.FormInputArea{
+.ProfileFormInputArea{
     display: flex;
-    width: 70%;
+    width: 80%;
     align-Items:center
 }
 
-.FormLabel{
+.ProfileFormLabel{
     font-Size: 2.5rem;
     padding: 1%;
     font-Weight: bold;
-    width:40%
+    width:50%
 }
 
-.FormInput{ 
+.ProfileFormInput{ 
     font-Size: 2rem;
     padding: 1%;
+    width: 60%;
  }
 
 .FormButtons{
@@ -90,4 +90,68 @@
     border: none;
     padding:1%;
     cursor: pointer;
+}
+
+.MobileGames{
+    display: none;
+}
+
+@media (max-width: 500px){
+    .MyGames{
+        display: none;
+    }
+
+    .OtherGames{
+        display: none;
+    }
+
+    .MobileGames{
+        display: flex ;
+        width: 80%;
+        margin-left: 10%;
+        flex-direction: column;
+    }
+
+    .ProfilePage{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .Profile{
+        position: relative;
+        width: 100%;
+    }
+
+    .OtherMobileGames{
+    
+        border-top: 3px solid black;
+        font-size: 1rem;
+    }
+
+    .MyMobileGames{
+        font-size: 1rem;
+    }
+
+    .Link{
+        font-size: 1.5rem;
+        
+    }
+
+    .MobileTitle{
+        font-size: 1.5rem;
+    }
+
+    .ProfileFormInput{
+        width: 100%;
+    }
+
+    .ProfileFormLabel{
+        font-size: 2rem;
+        width: 100%;
+    }
+
+    .ProfileFormInputArea{
+        flex-direction: column;
+        width: 90%;
+    }
 }

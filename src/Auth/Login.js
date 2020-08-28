@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
-
+import './Login.css'
 const Login = props => {
   const [credentials, setCredentials] = useState({
     email: "",
@@ -27,35 +27,31 @@ const Login = props => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: "center", alignItems: "center", width: "100vw", height: "100vh", flexDirection: "column" }}>
-    <h2 style={{ fontSize: "3rem" }}>
+    <div className="LoginDiv">
+    <h2 className="LoginTitle">
         Welcome back!
   </h2>
-    <form style={{ display: 'flex', flexDirection: "column", justifyContent: "space-between", width: "40%", height: '30%', backgroundColor: "", padding: "2%" }} onSubmit={login}>
+    <form className="LoginForm" onSubmit={login}>
         <input
-        style={{fontSize:"2.5rem"}}
+            className="LoginInput"
             type="email"
             name="email"
             placeholder="Email"
             value={credentials.email}
             onChange={handleChange}
         />
-        <input style={{fontSize:"2.5rem"}}
+        <input 
+            className="LoginInput"
             type="password"
             name="password"
             placeholder="Password"
             value={credentials.password}
             onChange={handleChange}
         />
-        <button style={{fontSize:"2.5rem", width:'60%', marginLeft: "20%"}} type="submit">Login</button>
+        <button className="LoginButton" type="submit">Login</button>
 
         <Link
-            style={{
-                textDecoration: "none",
-                color: "#FE0707",
-                fontSize: "2rem",
-                fontWeight: "bold"
-            }}
+            className="LoginLink"
             to="/register"
         >
             No account yet?
