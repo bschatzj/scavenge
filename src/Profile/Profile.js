@@ -22,13 +22,12 @@ export default function Profile() {
     const [starting, setStarting] = useState(false)
     const [visible, setVisible] = useState(true)
     const [displayDate, setDisplayDate] = useState('')
-    console.log(user)
     const History = useHistory()
 
     useEffect(() => {
         axiosWithAuth().get(`https://salty-peak-24943.herokuapp.com/api/profile/games/${localStorage.getItem('id')}`)
             .then(res => {
-                console.log(res)
+                
                 setGames(res.data.gameList)
             })
             .catch(err => {
@@ -37,7 +36,7 @@ export default function Profile() {
 
         axiosWithAuth().get('https://salty-peak-24943.herokuapp.com/api/game/games/all')
             .then(res => {
-                console.log(res)
+                
                 setPublicGames(res.data.games)
             })
             .catch(err => {
@@ -61,19 +60,19 @@ export default function Profile() {
     const handleChange = e => {
         let name = e.target.name;
         setGameInfo({ ...gameInfo, [name]: e.target.value });
-        console.log(gameInfo)
+       
     };
 
     const handleDate = date => {
         const newDate = Date.parse(date)
-        console.log(newDate)
+        
         setDisplayDate(date)
         setGameInfo({ ...gameInfo, end_date: newDate })
     }
 
     const handleChecked = e => {
         setGameInfo({ ...gameInfo, private: e.target.checked });
-        console.log(gameInfo)
+        
     };
 
     return (

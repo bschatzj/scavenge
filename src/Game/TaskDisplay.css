@@ -2,13 +2,15 @@
     width:99vw
 }
 
-.Title{
-    font-Size: '4.5rem';
+.SubmitTitle{
+    font-Size: 3.5rem;
     text-Align: center;
     text-Decoration: underline 
 }
 
-.Description{
+.TaskDescription{
+    width: 80%;
+    margin-left: 10%;
     font-Size: 2.5rem;
     text-Align: center
 }
@@ -21,7 +23,7 @@
 
 .Form{
     display: flex;
-    flex-Direction: 'column';
+    flex-Direction: column;
     margin-Left: 20%;
     width: 60%
 }
@@ -35,13 +37,15 @@
 }
 
 .Image{
-    width: '200px'
+    width: 200px
 }
 
 .TextArea{
     font-Size: 3rem;
     height: 10rem;
-    resize: none
+    resize: none;
+    width: 100%;
+    margin: 0;
 }
 
 .SubDiv{
@@ -74,4 +78,66 @@
 .NoSubmit{
     margin-Left: 10%;
     margin-Top: 10% 
+}
+
+.Cancel{
+    text-align: center;
+    cursor: pointer;
+}
+
+@media (max-width: 500px){
+
+    .SubmitTitle{
+        font-size: 2rem;
+    }
+
+    .TaskDisplay{
+        width: 100%;
+        margin: 0;
+    }
+
+    .Description{
+        font-size: 1.5rem;
+    }
+
+    .SubDiv{
+        width: 100%;
+    }
+
+    .SubmitButton{
+        width: 80%;
+        font-size: 1.5rem;
+        margin: 10%;
+    }
+
+    .Sub{
+        width: 80%;
+    }
+
+    .SubTitle{
+        font-size: 1.5rem;
+    }
+
+    .SubDescription{
+        font-size: 1rem;
+    }
+
+    .Form{
+        flex-direction: column;
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .TextArea{
+        width: 100%;
+        font-size: 1.2rem;
+    }
+
+    .Label{
+        font-size: 1.2rem;
+    }
+
+    .Input{
+        font-size: 1.2rem;
+    }
 }

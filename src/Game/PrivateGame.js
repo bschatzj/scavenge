@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom'
 
 
 export default function PrivateGame(props) {
-    console.log(props)
+    
     const game = (useLocation().pathname.slice(6))
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
@@ -15,7 +15,7 @@ export default function PrivateGame(props) {
     useEffect(() => {
         axiosWithAuth().get(`/profile/profile/${localStorage.getItem('id')}`)
             .then(res => {
-                console.log(res)
+                
                 setUser(res.data.profile)
             })
             .catch(err => { console.log(err) })
@@ -23,7 +23,7 @@ export default function PrivateGame(props) {
    
     const handleChange = e => {
         setPassword(e.target.value)
-        console.log(password)
+        
     }
 
 
@@ -34,7 +34,7 @@ export default function PrivateGame(props) {
     }
 
     const submit = e => {
-        console.log('submit')
+        
         if(password === props.password.password){
             setError(false)
             JoinGame()

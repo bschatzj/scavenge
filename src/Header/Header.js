@@ -25,7 +25,6 @@ export default function Header() {
     }, [location])
 
 
-    console.log(location.substr(6))
     return (
         <>
         <MobileHeader id="MobileOnly"/>

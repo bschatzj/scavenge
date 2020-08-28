@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-
+import './Countdown.css'
 
 export default function Countdown(props){
     const calculateTimeLeft = () => {
@@ -20,7 +20,6 @@ export default function Countdown(props){
 
     
       const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-      const [year] = useState(new Date().getFullYear());
     
       useEffect(() => {
         setTimeout(() => {
@@ -42,14 +41,15 @@ export default function Countdown(props){
         }
     
         timerComponents.push(
-          <h1>
-            {timeLeft[interval]} {interval}{" "}
-          </h1>
+          <div className="TimeDiv">
+            <h1>{timeLeft[interval]} </h1>
+            <h1>{interval}{" "} </h1>
+          </div>
         );
       });
       return (
-        <div style={{width:"60vw", marginLeft:"7.5vw"}}>
-          {timerComponents.length ? <div style={{display:"flex", justifyContent:"space-evenly"}}> <h1>Time Left:</h1> {timerComponents} </div> : <h1>TIME TO VOTE!!!</h1>}
+        <div>
+          {timerComponents.length ? <div className="TimeContain"> <h1>Time Left:</h1> {timerComponents} </div> : <h1>TIME TO VOTE!!!</h1>}
         </div>
       );
 }

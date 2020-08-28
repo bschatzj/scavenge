@@ -9,13 +9,11 @@ import Man from './HomeImages/man'
 import Woman from './HomeImages/woman'
 
 export default function HomePage(props) {
-    console.log(props)
     const scroll = useScroll()
     const window = Window()
 
     const top = (scroll.y / window.height)
-    console.log(top)
-    console.log(window)
+
     return (
         <div style={{ height: window.height * 6.5, display: "flex", justifyContent: "center" }}>
             {top < .1 ? <h1 style={{ fontSize: '4rem', top: "60%", position: "absolute", }}>Welcome to Scavenge With Friends!</h1> : null}

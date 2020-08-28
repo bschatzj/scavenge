@@ -25,7 +25,7 @@ export default function Emailer(props) {
     const [inviting, setInviting] = useState(false)
 
     const handleChange = e => {
-        console.log(email)
+        
         setEmail({ ...email, [e.target.name]: e.target.value })
     }
 

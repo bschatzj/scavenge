@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom'
 import './Tasks.css'
 
 export default function Tasks(props) {
-    console.log(props)
+   
     const location = useLocation()
     const [task, setTask] = useState({ title: "", description: "" })
     const [newTask, setNewTask] = useState(false)
@@ -13,7 +13,7 @@ export default function Tasks(props) {
     const [completed, setCompleted] = useState([])
 
     const handleChange = e => {
-        console.log(task)
+        
         setTask({ ...task, [e.target.name]: e.target.value })
     }
 

@@ -11,7 +11,7 @@ export default function User(props) {
     useEffect(() => {
         axiosWithAuth().get(`/profile/profile/${localStorage.getItem('id')}`)
             .then(res => {
-                console.log(res)
+                
                 setUser(res.data.profile)
             })
             .catch(err => { console.log(err) })

@@ -24,7 +24,7 @@ export default function Game(props) {
 
             axiosWithAuth().get(`/profile/profile/${localStorage.getItem('id')}`)
             .then(res => {
-                console.log(res)
+                
                 setProfile(res.data.profile)
             })
             .catch(err => { console.log(err) })
@@ -64,7 +64,6 @@ export default function Game(props) {
             .catch(err => { console.log(err) })
     }
 
-    console.log(gameInfo)
     return (
         <div className="Game">
             {inGame ? null : <button className="JoinGame" onClick={() => {JoinGame(gameInfo.gameInfo.game_title)}}>JOIN THIS GAME</button>}
@@ -80,14 +79,14 @@ export default function Game(props) {
                     {players.map(players => (
                         <>
                             <div className="Individual">
-                                <img className="PlayerPic" src={players.icon} />
+                                <img className="PlayerPic" src={players.icon} alt="Player Icon" />
                                 <h1> {players.display_name}</h1>
                             </div>
                         </>
                     ))}
                 </div>
             </div>
-            
+
             <Email password={gameInfo.gameInfo.password} /> </> : null}
             
         </div>

@@ -107,3 +107,66 @@
     font-size: 2rem;
     width: 30%;
 }
+
+
+@media (max-width: 500px){
+    .TaskContainer{
+        width: 100%;
+    }
+
+    .TaskForm{
+        width: 100%;
+    }
+
+    .TaskList{
+        width: 100%;
+    }
+
+    .TasksDiv{
+        width: 90%;
+        margin-left: 5% ;
+    }
+
+    .TaskContainer{
+        flex-direction: column;
+    }
+
+    .TaskTitle{
+        width: 100%;
+        padding: 2%;
+        font-size: 2rem;
+    }
+
+    .Incomplete{
+        font-size: 1.5rem;
+        width: 100%;
+        padding: 2%;
+    }
+
+    .TaskButton{
+        font-size: 1rem;
+        width: 90%;
+    }
+
+    .FormDiv{
+        width: 100%;
+        padding: 1%;
+        flex-direction: column;
+    }
+
+    .FormLabel{
+        width: 100%;
+        font-size: 2rem;
+    }
+
+    .FormInput{
+        width: 90%;
+    }
+
+    .TextArea{
+        margin: 0;
+        width: 90%;
+    }
+
+    
+}

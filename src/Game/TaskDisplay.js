@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { useLocation } from 'react-router-dom'
-import axios from 'axios'
 import './TaskDisplay.css'
 
 export default function TaskDisplay() {
@@ -27,6 +26,7 @@ export default function TaskDisplay() {
     const [voting, setVoting] = useState(false)
     const [votes, setVotes] = useState([])
     const [voted, setVoted] = useState(false)
+    const [message, setMessage] = useState('')
     useEffect(() => {
         axiosWithAuth().post(`/game/task/${id}`, { 'game': game })
             .then(res => {
@@ -38,7 +38,6 @@ export default function TaskDisplay() {
 
         axiosWithAuth().get(`/game/subs/${id}`)
             .then(res => {
-                console.log(res)
                 setSubs(res.data.posts)
             })
             .catch(err => { console.log(err) })
@@ -51,8 +50,6 @@ export default function TaskDisplay() {
     }, [])
 
     useEffect(() => {
-        console.log(parseInt(gameInfo.gameInfo.end_date))
-        console.log(Date.now())
         if (parseInt(gameInfo.gameInfo.end_date) < Date.now()) {
             setVoting(true)
         }
@@ -78,7 +75,6 @@ export default function TaskDisplay() {
 
     }, [votes])
 
-    console.log(subs)
 
     const handleChange = e => {
         setSubmit({ ...submit, [e.target.name]: e.target.value })
@@ -105,9 +101,10 @@ export default function TaskDisplay() {
     }
 
     const handleSubmit = () => {
+        setAdding(false)
         axiosWithAuth().post(`/game/submit/${id}`, submit)
-            .then(res => { console.log(res) })
-            .catch(err => { console.log(err) })
+            .then(res => {setMessage("Upload Success!")})
+            .catch(err => {setMessage('Error uploading your post try again in 10 minutes') })
     }
 
     const Vote = (id) => {
@@ -118,11 +115,11 @@ export default function TaskDisplay() {
 
 
 
-    console.log(votes)
     return (
         <div className="TaskDisplay">
-            <h1 className="Title">{taskInfo.title}</h1>
-            <h1 className="Description">Description: {taskInfo.description}</h1>
+            <h1 className="SubmitTitle">{taskInfo.title}</h1>
+            <h1 className="TaskDescription">Description: {taskInfo.description}</h1>
+            <h1> {message}</h1>
             {submitted ? null :
                 <>{adding ? <button className="SubmitButton" onClick={() => { handleSubmit() }}>Submit</button> :
                     <button className="SubmitButton" onClick={() => { setAdding(true) }}>New Submission</button>}
@@ -155,6 +152,7 @@ export default function TaskDisplay() {
                     <input className="Label" value={submit.title} name="title" onChange={handleChange} />
                     <label className="Label">Description:</label>
                     <textarea className="TextArea" value={submit.description} name="description" onChange={handleChange} />
+                    <h1 className="Cancel" onClick={() => {setAdding(false)}}>Cancel</h1>
                 </div> : null
             }
 
@@ -166,10 +164,10 @@ export default function TaskDisplay() {
                         subs.map(sub => (
 
                             <div className="Sub">
-                                {console.log(sub)}
+                                
                                 <h1 className="SubTitle">Title: {sub.title}</h1>
                                 <img className="SubImg" src={sub.photo} alt={sub.description} />
-                                <h1>Description: {sub.description}</h1>
+                                <h1 className="SubDescription">Description: {sub.description}</h1>
                                 {voting ? <>{voted ? null : <button className="Vote" onClick={() => { Vote(sub.task) }}>^ Vote ^</button>}</> : null}
                                 {votes.map(vote => {
                                     if(vote.task == sub.task){
