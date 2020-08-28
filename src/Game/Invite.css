@@ -55,3 +55,45 @@
     justify-Content: center;
     margin-Left:25% 
 }
+
+@media (max-width: 500px){
+    .Invite{
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .InviteDiv{
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .InviteForm{
+        width: 100%;
+    }
+
+    .InviteTextArea{
+        width: 100%;
+        font-size: 1.5rem;
+    }
+
+    .InviteInput{
+        width: 100%;
+        font-size: 1.5rem;
+    }
+
+    .SendInvite{
+        width: 90%;
+        margin: 5%;
+        font-size: 1.5rem;
+    }
+
+    .Cancel{
+        width: 90%;
+        margin: 5%;
+        font-size: 1.5rem;
+    }
+
+    .InviteLabel{
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,25 @@
+.Header{
+    height: 10vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-Content: space-evenly
+}
+
+.HeaderButton{
+    cursor: pointer;
+}
+
+#MobileOnly{
+    display: none;
+}
+
+@media (max-width: 500px){
+    #MobileOnly{
+        display: flex;
+    }
+
+    .Header{
+        display: none;
+    }
+}

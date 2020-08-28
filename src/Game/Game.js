@@ -70,6 +70,10 @@ export default function Game(props) {
             {inGame ? null : <button className="JoinGame" onClick={() => {JoinGame(gameInfo.gameInfo.game_title)}}>JOIN THIS GAME</button>}
             {playerIDs.includes(parseInt(localStorage.getItem('id'))) || gameInfo.gameInfo.private === false ? <h1 className="Title">{gameInfo.gameInfo.game_title}</h1> : <div className="Private"><PrivateGame password={gameInfo.gameInfo} setPlayers={setPlayerIDs} players={playerIDs} /></div>}
             <Countdown endTime={gameInfo.gameInfo.end_date} setVoting={setVoting} />
+            { inGame ?
+            <>
+            <Tasks tasks={tasks} voting={voting} id={gameInfo.gameInfo.game_id} subs={gameInfo.Subs} setTasks={setTasks} />
+            
             <div className="PlayerDiv">
                 <h1 className="Players">Players</h1>
                 <div className="PlayerDisplay">
@@ -83,10 +87,9 @@ export default function Game(props) {
                     ))}
                 </div>
             </div>
-            { inGame ?
-            <>
-            <Tasks tasks={tasks} voting={voting} id={gameInfo.gameInfo.game_id} subs={gameInfo.Subs} setTasks={setTasks} />
+            
             <Email password={gameInfo.gameInfo.password} /> </> : null}
+            
         </div>
     )
 }

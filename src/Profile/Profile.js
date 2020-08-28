@@ -125,7 +125,7 @@ export default function Profile() {
                                 <label className="ProfileFormLabel">End Date</label>
                                 <DatePicker id="date" name="end_date" selected={displayDate} onChange={handleDate} style={{ fontSize: "2.5rem" }} />
                             </div>
-                            <div className="ProfileFormInputArea">
+                            <div  id="Private" className="ProfileFormInputArea">
                                 <label className="ProfileFormLabel">Private?</label>
                                 <input
                                     style={{ transform: "scale(3)" }}

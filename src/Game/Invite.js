@@ -44,9 +44,9 @@ export default function Emailer(props) {
             <h1 className="Invite" onClick={() => { setInviting(true) }}>Invite some friends!</h1>
             {inviting ?
                 <div className="InviteForm">
-                    <label className="Label">Recipient Email:</label>
+                    <label className="InviteLabel">Recipient Email:</label>
                     <input className="InviteInput" value={email.email} onChange={handleChange} name="email"></input>
-                    <label className="Label" >Message:</label>
+                    <label className="InviteLabel" >Message:</label>
                     <textarea className="InviteTextArea" value={email.message} onChange={handleChange} name="message"></textarea>
                     <button  className="SendInvite" onClick={() => {handleInvite()}}>Send Invitation</button>
                     <button  className="Cancel" onClick={() => {setInviting(false)}}>Cancel</button>

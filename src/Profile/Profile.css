@@ -96,7 +96,24 @@
     display: none;
 }
 
+#date{
+    width: 60%;
+    font-size: 3rem;
+}
+
 @media (max-width: 500px){
+
+    #date{
+        width: 60%;
+        font-size: 2rem;
+    }
+
+#Private{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
     .MyGames{
         display: none;
     }
@@ -152,6 +169,6 @@
 
     .ProfileFormInputArea{
         flex-direction: column;
-        width: 90%;
+        width: 75%;
     }
 }

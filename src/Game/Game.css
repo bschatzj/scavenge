@@ -70,3 +70,45 @@
      height: 25vh;
      width: 20vw 
 }
+
+@media (max-width: 500px){
+    .Game{
+        width: 100%;
+    }
+
+    .Title{
+        font-size: 2.5rem;
+    }
+
+    .JoinGame{
+        font-size: 2rem;
+    }
+
+    .PlayerDiv{
+        position: relative;
+        width: 100%;
+        height: auto;
+        left: 0;
+        margin: 0;
+        border: none;
+        overflow: visible;
+    }
+
+    .Players{
+        position: relative;
+        width: 100%;
+        margin: 0;
+        margin-top: 10%;
+    }
+
+    .PlayerDisplay{
+        position: relative;
+        width: 100%;
+        top: 0;
+    }
+
+    .Individual{
+        border-top: none;
+        border-bottom: 5px solid black;
+    }
+}
