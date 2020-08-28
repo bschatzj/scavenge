@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 import { useLocation } from 'react-router-dom'
+
+
+
 export default function PrivateGame(props) {
+    console.log(props)
     const game = (useLocation().pathname.slice(6))
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
@@ -19,17 +23,18 @@ export default function PrivateGame(props) {
    
     const handleChange = e => {
         setPassword(e.target.value)
+        console.log(password)
     }
 
 
     const JoinGame = () => {
-        props.setPlayers([...props.playerIDs, parseInt(localStorage.getItem('id'))])
         axiosWithAuth().post(`https://salty-peak-24943.herokuapp.com/api/game/joingame`, { 'name': user.display_name, 'user': parseInt(localStorage.getItem('id')), 'game': game })
-            .then(res => { console.log(res) })
+            .then(res => { window.location.reload() })
             .catch(err => { console.log(err) })
     }
 
     const submit = e => {
+        console.log('submit')
         if(password === props.password.password){
             setError(false)
             JoinGame()
