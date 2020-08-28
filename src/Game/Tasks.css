@@ -102,3 +102,8 @@
     text-Align: center;
     cursor: pointer 
 }
+
+.Incomplete{
+    font-size: 2rem;
+    width: 30%;
+}

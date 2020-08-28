@@ -60,7 +60,7 @@ console.log(completed)
                     <Link to={`${location.pathname}/task/${task.task_id}`} className="Link">
                         <div className="TaskContainer">
                             <h1 className="TaskTitle">{task.title}</h1>
-                            {completed.includes(task.task_id) ? <span className="CheckMark">&#10003;</span> :<h1 style={{width:"20%"}}>Incomplete</h1>}
+                            {completed.includes(task.task_id) ? <span className="CheckMark">&#10003;</span> :<h1 className="Incomplete">Incomplete</h1>}
                         </div>
                     </Link>
                 ))}
