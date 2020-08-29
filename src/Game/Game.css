@@ -46,14 +46,13 @@
 }
 
 .PlayerDisplay{
-    display: flex;
      justify-Content: space-evenly;
-     flex-Wrap: wrap;
      width: 25vw;
+     height: 88vh;
      flex-Direction: column;
      top: 12vh;
      position: fixed;
-     overflow: auto 
+     overflow-y: scroll;
 }
 
 .Individual{
@@ -63,6 +62,7 @@
      border-Top: 5px solid black;
      width: 100%;
      padding-Top: 10px
+     
 }
 
 .PlayerPic{

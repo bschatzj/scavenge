@@ -30,12 +30,12 @@ export default function PrivateGame(props) {
     const JoinGame = () => {
         axiosWithAuth().post(`https://salty-peak-24943.herokuapp.com/api/game/joingame`, { 'name': user.display_name, 'user': parseInt(localStorage.getItem('id')), 'game': game })
             .then(res => { window.location.reload() })
-            .catch(err => { console.log(err) })
+            .catch(err => { window.location.reload() })
     }
 
     const submit = e => {
         
-        if(password === props.password.password){
+        if(password == props.password.password){
             setError(false)
             JoinGame()
             console.log('welcome')
@@ -47,12 +47,12 @@ export default function PrivateGame(props) {
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}> 
-            <h1 style={{color:"white", fontSize:"8rem"}}>PASSWORD REQUIRED</h1>  
-            {error ? null : <h1>WRONG PASSWORD</h1> }
+            <h1 style={{color:"white", fontSize:"4rem"}}>PASSWORD REQUIRED</h1>  
+            {error ? null : <h1 style={{color:"red"}}>WRONG PASSWORD</h1> }
             <form>
-                <input style={{fontSize:"5rem"}} type="password"  value={password} onChange={handleChange}/>
+                <input style={{fontSize:"3rem"}} type="password"  value={password} onChange={handleChange}/>
             </form>
-            <button onClick={() => {submit()}} style={{margin:"4rem", fontSize:"5rem", border:"none", height:"15vh", width:"40vw"}}>ENTER</button>
+            <button onClick={() => {submit()}} style={{margin:"4rem", fontSize:"3rem", border:"none", height:"15vh", width:"40vw"}}>ENTER</button>
         </div>
     )
 }
