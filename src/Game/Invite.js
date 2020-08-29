@@ -14,7 +14,7 @@ export default function Emailer(props) {
         setEmail({
             email: "",
             message: `You have been invited to a scavenger hunt! ${"\n"}
-        If you would like to join please make an account at http://scavengewithfriends.com/register Then this link is to the game http://scavengewithfriends.com/${location.pathname}! ${"\n"}
+        If you would like to join please make an account at http://scavengewithfriends.com/register Then this link is to the game http://scavengewithfriends.com/${(location.pathname.replace(' ', '%20'))}! ${"\n"}
 
         ${props.password ? `One last thing there will be a password to get into the game. The password is: ${props.password}` : ""}
 
