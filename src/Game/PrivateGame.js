@@ -52,7 +52,7 @@ export default function PrivateGame(props) {
             <form>
                 <input style={{fontSize:"3rem"}} type="password"  value={password} onChange={handleChange}/>
             </form>
-            <button onClick={() => {submit()}} style={{margin:"4rem", fontSize:"3rem", border:"none", height:"15vh", width:"40vw"}}>ENTER</button>
+            <button onClick={() => submit()} style={{margin:"4rem", fontSize:"3rem", border:"none", height:"15vh", width:"40vw"}}>ENTER</button>
         </div>
     )
 }

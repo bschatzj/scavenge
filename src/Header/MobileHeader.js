@@ -72,6 +72,11 @@ const Burger = () => {
         history.push('/login')
     }
 
+    const handleLink = (push) => {
+      history.push(`/${push}`)
+      setOpen(false)
+    }
+
     return (
         <>
             <StyledBurger id="MobileOnly" open={open} onClick={() => setOpen(!open)}>
@@ -81,8 +86,10 @@ const Burger = () => {
             </StyledBurger>
 
             <Ul open={open}>
-            {location.substr(6).includes('/task/') ? <h1  className="HeaderButton" onClick={() => {history.goBack()}}> &larr; Back</h1> : null}
-            <h1 className="HeaderButton" onClick={() => { history.push('/profile') }}>Profile</h1>
+            {location.substr(6).includes('/task/') ? <h1  className="HeaderButton" onClick={() => {history.goBack()
+            setOpen(false)
+            }}> &larr; Back</h1> : null}
+            <h1 className="HeaderButton" onClick={() => { handleLink('profile') }}>Profile</h1>
             <h1 onClick={() => { history.push('/profile') }} className="HeaderButton">How To Play</h1>
             <h1 className="HeaderButton" onClick={() => { LogOut() }}>Log Out</h1>
             </Ul>
