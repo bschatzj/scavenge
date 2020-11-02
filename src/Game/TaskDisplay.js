@@ -76,6 +76,8 @@ export default function TaskDisplay() {
     }, [votes])
 
 
+
+
     const handleChange = e => {
         setSubmit({ ...submit, [e.target.name]: e.target.value })
     }
@@ -103,8 +105,8 @@ export default function TaskDisplay() {
     const handleSubmit = () => {
         setAdding(false)
         axiosWithAuth().post(`/game/submit/${id}`, submit)
-            .then(res => {setMessage("Upload Success!")})
-            .catch(err => {setMessage('Error uploading your post try again in 10 minutes') })
+            .then(res => { setMessage("Upload Success!") })
+            .catch(err => { setMessage('Error uploading your post try again in 10 minutes') })
     }
 
     const Vote = (id) => {
@@ -152,7 +154,7 @@ export default function TaskDisplay() {
                     <input className="Label" value={submit.title} name="title" onChange={handleChange} />
                     <label className="Label">Description:</label>
                     <textarea className="TextArea" value={submit.description} name="description" onChange={handleChange} />
-                    <h1 className="Cancel" onClick={() => {setAdding(false)}}>Cancel</h1>
+                    <h1 className="Cancel" onClick={() => { setAdding(false) }}>Cancel</h1>
                 </div> : null
             }
 
@@ -164,18 +166,20 @@ export default function TaskDisplay() {
                         subs.map(sub => (
 
                             <div className="Sub">
-                                
+
                                 <h1 className="SubTitle">Title: {sub.title}</h1>
                                 <img className="SubImg" src={sub.photo} alt={sub.description} />
                                 <h1 className="SubDescription">Description: {sub.description}</h1>
                                 {voting ? <>{voted ? null : <button className="Vote" onClick={() => { Vote(sub.task) }}>^ Vote ^</button>}</> : null}
                                 {votes.map(vote => {
-                                    if(vote.task == sub.task){
-                                        
-                                        return <div style={{width:"60vw"}}> <div style ={{width:`${1/votes.length * 100}%`, backgroundColor:"red", height:"50px", display:"flex", justifyContent:"center", alignItems:"center", fontSize:"3rem"}}>{1/votes.length * 100}% of vote </div> <div style={{width:`${(1 - 1/votes.length) * 100}%`, backgroundColor:"white"}}></div> </div>
+                                    console.log(vote)
+                                    console.log(sub)
+                                    if (vote.task == sub.task) {
+
+                                        return <div style={{ width: "60vw" }}> <div style={{ width: `${1 / votes.length * 100}%`, backgroundColor: "red", height: "50px", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "3rem" }}>{1 / votes.length * 100}% of vote </div> <div style={{ width: `${(1 - 1 / votes.length) * 100}%`, backgroundColor: "white" }}></div> </div>
                                     }
                                 })}
-                                {voting ? <div style={{width:"60vw", backgroundColor:"red"}}> {votes.where} </div> : null}
+
                             </div>
                         ))
                     }
